@@ -581,12 +581,16 @@ body {
   padding: 36px;
   position: relative;
   overflow: hidden;
-  transition: border-color 0.3s, transform 0.35s var(--ease-apple);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: border-color 0.3s, transform 0.35s var(--ease-apple), box-shadow 0.35s ease;
 }
 
 .bento-card:hover {
-  border-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-3px);
+  border-color: rgba(212, 160, 23, 0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75), 0 0 25px rgba(212, 160, 23, 0.08);
 }
 
 /* Card Sizes */
@@ -906,23 +910,33 @@ body {
    ========================================================================== */
 .glass-overlap-wrapper {
   position: relative;
-  padding: 110px 6% 100px;
+  padding: 80px 6% 60px;
   background: #000000;
   z-index: 6;
 }
 
 .glass-card-stack {
-  position: sticky;
-  top: 85px;
-  max-width: 1320px;
-  margin: 0 auto 80px;
-  min-height: 75vh;
+  position: relative;
+  max-width: 1240px;
+  margin: 0 auto 36px;
+  min-height: auto;
   border-radius: var(--radius-xl);
   background: #0d0d12;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
-  padding: 50px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+  padding: 44px 48px;
   overflow: hidden;
+  transition: transform 0.35s var(--ease-apple), border-color 0.3s ease, box-shadow 0.35s ease;
+}
+
+.glass-card-stack:last-child {
+  margin-bottom: 0;
+}
+
+.glass-card-stack:hover {
+  border-color: rgba(212, 160, 23, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 28px 65px rgba(0, 0, 0, 0.85), 0 0 30px rgba(212, 160, 23, 0.08);
 }
 
 .glass-card-inner {
