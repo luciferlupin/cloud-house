@@ -31,6 +31,12 @@ export function initScrollStack() {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-active');
 
+          // Cascade is-active to child reveals inside this container
+          const childReveals = entry.target.querySelectorAll(
+            '.line-mask-reveal, .text-slide-reveal, .body-slide-reveal, .badge-wipe-reveal, .scale-card-reveal'
+          );
+          childReveals.forEach(child => child.classList.add('is-active'));
+
           // Trigger Meter Bars inside this target if present
           const meterFills = entry.target.querySelectorAll('.meter-fill, .bar-fill');
           meterFills.forEach(bar => {
@@ -41,22 +47,38 @@ export function initScrollStack() {
             }, 120);
           });
 
-          // Trigger Animated Number Counters
-          const counter = entry.target.querySelector('.count-up-val');
-          if (counter && !counter.dataset.counted) {
-            counter.dataset.counted = 'true';
-            animateCounter(counter);
+          // Trigger Animated Number Counters for all counters inside this target
+          const counters = entry.target.querySelectorAll('.count-up-val');
+          counters.forEach(counter => {
+            if (!counter.dataset.counted) {
+              counter.dataset.counted = 'true';
+              animateCounter(counter);
+            }
+          });
+          if (entry.target.classList.contains('count-up-val') && !entry.target.dataset.counted) {
+            entry.target.dataset.counted = 'true';
+            animateCounter(entry.target);
           }
 
           motionObserver.unobserve(entry.target);
         }
       });
     }, {
-      rootMargin: '0px 0px -60px 0px',
-      threshold: 0.12
+      rootMargin: '0px 0px -40px 0px',
+      threshold: 0.1
     });
 
     motionTargets.forEach(el => motionObserver.observe(el));
+
+    // Immediately trigger any counters already marked is-active on initial load (e.g. in hero)
+    setTimeout(() => {
+      document.querySelectorAll('.is-active .count-up-val').forEach(counter => {
+        if (!counter.dataset.counted) {
+          counter.dataset.counted = 'true';
+          animateCounter(counter);
+        }
+      });
+    }, 250);
 
     // Active Section Tracker
     const sectionObserver = new IntersectionObserver((entries) => {

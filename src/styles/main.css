@@ -91,12 +91,12 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 64px;
+  height: calc(64px + env(safe-area-inset-bottom, 0px));
   background: rgba(10, 10, 14, 0.94);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 0 16px;
+  padding: 0 16px env(safe-area-inset-bottom, 0px);
   z-index: 1500;
   align-items: center;
   justify-content: space-between;
@@ -797,6 +797,8 @@ body {
 .wedding-spotlight-frame img {
   width: 100%;
   height: 100%;
+  aspect-ratio: 16 / 10;
+  max-height: 480px;
   object-fit: cover;
   display: block;
 }
@@ -904,7 +906,7 @@ body {
    ========================================================================== */
 .glass-overlap-wrapper {
   position: relative;
-  padding: 50px 5% 100px;
+  padding: 110px 6% 100px;
   background: #000000;
   z-index: 6;
 }
@@ -912,8 +914,9 @@ body {
 .glass-card-stack {
   position: sticky;
   top: 85px;
+  max-width: 1320px;
+  margin: 0 auto 80px;
   min-height: 75vh;
-  margin-bottom: 80px;
   border-radius: var(--radius-xl);
   background: #0d0d12;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1766,15 +1769,19 @@ body {
     display: flex;
   }
   body {
-    padding-bottom: 64px;
+    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px));
   }
   .process-steps-row {
     grid-template-columns: 1fr;
   }
+  .comparison-table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
   .comp-row {
-    grid-template-columns: 1.2fr 1fr 1fr;
-    padding: 14px 12px;
-    font-size: 0.78rem;
+    min-width: 540px;
+    padding: 16px 16px;
+    font-size: 0.82rem;
   }
   .event-portfolio-grid {
     grid-template-columns: 1fr;
@@ -1790,5 +1797,9 @@ body {
   }
   .bento-card {
     padding: 24px 20px;
+  }
+  .apple-specs-bar {
+    flex-wrap: wrap;
+    gap: 20px;
   }
 }

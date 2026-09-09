@@ -66,6 +66,15 @@ export function initTenderEstimator() {
     if (receiptSommeliers) receiptSommeliers.textContent = `${crewCount} Certified Tenders`;
     if (receiptTier) receiptTier.textContent = tier.name;
 
+    // Dynamically update WhatsApp CTA with configured details
+    const estimatorWhatsAppBtn = document.getElementById('estimatorWhatsAppBtn') || document.querySelector('.estimator-summary-card .whatsapp-cta');
+    if (estimatorWhatsAppBtn) {
+      const encodedMsg = encodeURIComponent(
+        `Hi Jatin, I would like to reserve a Cloudhouse Shisha Tender for my ${state.eventType} with ${state.guests} guests, ${state.stations} titanium pipes, ${state.duration} hours, and ${tier.name}. Estimated quotation is ₹${total.toLocaleString('en-IN')}. Please confirm availability.`
+      );
+      estimatorWhatsAppBtn.href = `https://wa.me/919625748696?text=${encodedMsg}`;
+    }
+
     // Pre-populate modal fields if present
     const modalPackageInput = document.getElementById('modalPackageSummary');
     if (modalPackageInput) {

@@ -100,6 +100,13 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = '';
       }
     });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+    });
   }
 
   // 9. Form Submission
