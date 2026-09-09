@@ -1,7 +1,7 @@
 @import './variables.css';
 
 /* ==========================================================================
-   Advanced Motion, Swiss Typography & Micro-Interaction Stylesheet
+   Flagship Apple Bento, Swiss Grid & Responsive Architecture
    ========================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -84,11 +84,27 @@ body {
   text-transform: uppercase;
 }
 
-/* ==========================================================================
-   MOTION SCROLL ANIMATION SUITE (Headings, Sub-titles, Body & Wipes)
-   ========================================================================== */
+/* Mobile Bottom Sticky Bar */
+.mobile-sticky-action-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: rgba(10, 10, 14, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0 16px;
+  z-index: 1500;
+  align-items: center;
+  justify-content: space-between;
+}
 
-/* 1. Line-Masked Heading Reveal (Apple / Awwwards Style) */
+/* ==========================================================================
+   MOTION SCROLL ANIMATION SUITE
+   ========================================================================== */
 .line-mask-reveal {
   display: block;
   overflow: hidden;
@@ -108,11 +124,10 @@ body {
   opacity: 1;
 }
 
-/* 2. Sub-headings & Quotes Reveal with Kinetic Blur */
 .text-slide-reveal {
   opacity: 0;
-  transform: translateY(32px) scale(0.98);
-  filter: blur(5px);
+  transform: translateY(30px) scale(0.98);
+  filter: blur(4px);
   transition: opacity 0.8s var(--ease-apple), transform 0.8s var(--ease-apple), filter 0.8s var(--ease-apple);
   will-change: opacity, transform, filter;
 }
@@ -123,10 +138,9 @@ body {
   filter: blur(0);
 }
 
-/* 3. Body Copy & Description Smooth Glide */
 .body-slide-reveal {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(22px);
   transition: opacity 0.75s var(--ease-apple), transform 0.75s var(--ease-apple);
   will-change: opacity, transform;
 }
@@ -136,7 +150,6 @@ body {
   transform: translateY(0);
 }
 
-/* 4. Monospace Badge Clip-Path Wipe */
 .badge-wipe-reveal {
   clip-path: inset(0 100% 0 0);
   transition: clip-path 0.7s var(--ease-apple);
@@ -146,10 +159,9 @@ body {
   clip-path: inset(0 0% 0 0);
 }
 
-/* 5. Scale Card & Image Zoom-in Reveal */
 .scale-card-reveal {
   opacity: 0;
-  transform: translateY(30px) scale(0.95);
+  transform: translateY(30px) scale(0.96);
   transition: opacity 0.85s var(--ease-apple), transform 0.85s var(--ease-apple);
   will-change: opacity, transform;
 }
@@ -159,14 +171,13 @@ body {
   transform: translateY(0) scale(1);
 }
 
-/* Stagger Delays */
 .delay-1 { transition-delay: 0.08s; }
 .delay-2 { transition-delay: 0.16s; }
 .delay-3 { transition-delay: 0.24s; }
 .delay-4 { transition-delay: 0.32s; }
 .delay-5 { transition-delay: 0.40s; }
 
-/* Smoke canvas confined to Hero only */
+/* Hero Smoke Canvas */
 .hero-smoke-canvas {
   position: absolute;
   inset: 0;
@@ -176,15 +187,15 @@ body {
   z-index: 1;
 }
 
-/* Navigation */
+/* Swiss Nav */
 .swiss-nav {
   position: fixed;
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 90%;
-  max-width: 1180px;
-  height: 56px;
+  width: 92%;
+  max-width: 1240px;
+  height: 58px;
   padding: 0 20px;
   background: rgba(10, 10, 14, 0.88);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -194,7 +205,7 @@ body {
   justify-content: space-between;
   z-index: 1000;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-  transition: background 0.3s ease, border-color 0.3s ease;
+  transition: background 0.3s ease;
 }
 
 .brand-logo {
@@ -214,7 +225,6 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
-  box-shadow: 0 0 12px var(--amber-glow);
 }
 
 .brand-symbol::after {
@@ -228,7 +238,7 @@ body {
 
 @keyframes emberPulse {
   0%, 100% { transform: scale(0.9); opacity: 0.7; }
-  50% { transform: scale(1.25); opacity: 1; box-shadow: 0 0 8px var(--amber-core); }
+  50% { transform: scale(1.25); opacity: 1; }
 }
 
 .brand-text {
@@ -257,23 +267,8 @@ body {
   position: relative;
 }
 
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0%;
-  height: 1.5px;
-  background: var(--amber-core);
-  transition: width 0.25s ease;
-}
-
 .nav-links a:hover {
   color: #ffffff;
-}
-
-.nav-links a:hover::after {
-  width: 100%;
 }
 
 .nav-actions {
@@ -299,7 +294,6 @@ body {
 .ambient-toggle:hover, .ambient-toggle.playing {
   color: var(--amber-core);
   border-color: var(--border-amber);
-  box-shadow: 0 0 12px var(--amber-glow);
 }
 
 .btn-pill-white {
@@ -344,12 +338,11 @@ body {
 
 .btn-pill-glass:hover {
   background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.24);
   transform: translateY(-1.5px);
 }
 
 /* ==========================================================================
-   SECTION 1: Apple Hardware Hero Reveal
+   Hero Section
    ========================================================================== */
 .apple-hero {
   min-height: 100vh;
@@ -397,12 +390,6 @@ body {
   border-radius: 50%;
   background: #10b981;
   box-shadow: 0 0 8px #10b981;
-  animation: pulseGreen 2s infinite;
-}
-
-@keyframes pulseGreen {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; transform: scale(1.25); }
 }
 
 .apple-giant-title {
@@ -464,7 +451,6 @@ body {
   margin-top: 2px;
 }
 
-/* Frameless Floating Shisha Subject with 3D Magnetic Tilt */
 .frameless-hardware-stage {
   position: relative;
   display: flex;
@@ -479,10 +465,8 @@ body {
   height: auto;
   display: block;
   transition: transform 0.12s linear;
-  will-change: transform;
 }
 
-/* Micro-Interaction: Radar Pulse Spec Pointers */
 .floating-pointer {
   position: absolute;
   padding: 10px 16px;
@@ -498,31 +482,8 @@ body {
   transform: scale(1.05);
 }
 
-.floating-pointer::before {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--amber-core);
-  opacity: 0;
-  animation: pointerRadar 2.5s infinite;
-  pointer-events: none;
-}
-
-@keyframes pointerRadar {
-  0% { transform: scale(0.98); opacity: 0.8; }
-  100% { transform: scale(1.15); opacity: 0; }
-}
-
-.pointer-top {
-  top: 10%;
-  right: -5px;
-}
-
-.pointer-bottom {
-  bottom: 12%;
-  left: -5px;
-}
+.pointer-top { top: 10%; right: -5px; }
+.pointer-bottom { bottom: 12%; left: -5px; }
 
 .pointer-label {
   font-family: var(--font-mono);
@@ -539,7 +500,7 @@ body {
 }
 
 /* ==========================================================================
-   Venue & Club Credentials Strip
+   Venue Credentials Strip
    ========================================================================== */
 .venue-strip-section {
   padding: 36px 6%;
@@ -585,19 +546,263 @@ body {
   color: var(--text-secondary);
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  transition: transform 0.25s var(--ease-apple), border-color 0.25s, color 0.25s;
-  cursor: default;
+  transition: all 0.25s var(--ease-apple);
 }
 
 .venue-pill:hover {
   border-color: var(--amber-core);
   color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.15);
 }
 
 /* ==========================================================================
-   SECTION 2: Swiss Typographic Grid (Animated Border Drawing)
+   NEW: Apple-Style Industrial Bento Grid Section
+   ========================================================================== */
+.bento-section {
+  padding: 110px 6%;
+  background: #000000;
+  position: relative;
+  z-index: 5;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.bento-grid {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+
+.bento-card {
+  background: #0c0c11;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.35s var(--ease-apple);
+}
+
+.bento-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px);
+}
+
+/* Card Sizes */
+.bento-col-8 { grid-column: span 8; }
+.bento-col-4 { grid-column: span 4; }
+.bento-col-6 { grid-column: span 6; }
+.bento-col-12 { grid-column: span 12; }
+
+.bento-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--amber-core);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.bento-title {
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+
+.bento-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Exploded graphic inside bento */
+.bento-exploded-img {
+  width: 100%;
+  max-height: 320px;
+  object-fit: contain;
+  margin-top: 20px;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.9));
+}
+
+/* Soundwave visualizer micro-interaction */
+.soundwave-box {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  height: 48px;
+  margin: 24px 0 10px;
+}
+
+.soundwave-bar {
+  width: 6px;
+  background: var(--amber-core);
+  border-radius: 3px;
+  animation: waveMotion 1.4s infinite ease-in-out;
+}
+
+.soundwave-bar:nth-child(1) { height: 35%; animation-delay: 0.1s; }
+.soundwave-bar:nth-child(2) { height: 65%; animation-delay: 0.25s; }
+.soundwave-bar:nth-child(3) { height: 90%; animation-delay: 0.4s; }
+.soundwave-bar:nth-child(4) { height: 45%; animation-delay: 0.15s; }
+.soundwave-bar:nth-child(5) { height: 80%; animation-delay: 0.3s; }
+.soundwave-bar:nth-child(6) { height: 50%; animation-delay: 0.2s; }
+.soundwave-bar:nth-child(7) { height: 100%; animation-delay: 0.45s; }
+
+@keyframes waveMotion {
+  0%, 100% { transform: scaleY(0.4); opacity: 0.6; }
+  50% { transform: scaleY(1.1); opacity: 1; }
+}
+
+/* 5-Step Process Horizontal List */
+.process-steps-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.process-step-item {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-md);
+  padding: 18px 14px;
+}
+
+.process-num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--amber-core);
+  margin-bottom: 6px;
+}
+
+.process-step-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.process-step-sub {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   NEW: Comparison Matrix Section (Swiss Spec Sheet)
+   ========================================================================== */
+.comparison-section {
+  padding: 110px 6%;
+  background: #000000;
+  position: relative;
+  z-index: 5;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.comparison-table-wrapper {
+  max-width: 1320px;
+  margin: 0 auto;
+  background: #0b0b0f;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.comp-row {
+  display: grid;
+  grid-template-columns: 1.4fr 1.3fr 1.3fr;
+  padding: 24px 36px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  align-items: center;
+  transition: background 0.2s;
+}
+
+.comp-row:last-child {
+  border-bottom: none;
+}
+
+.comp-row:hover {
+  background: #0f0f16;
+}
+
+.comp-header {
+  background: #111117;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.comp-header .comp-cloudhouse {
+  color: var(--amber-core);
+  font-weight: 700;
+}
+
+.comp-feature {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.comp-standard {
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+.comp-cloudhouse {
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.comp-cloudhouse::before {
+  content: '✓';
+  color: var(--amber-core);
+  font-weight: 800;
+}
+
+/* ==========================================================================
+   Destination Weddings Spotlight Section
+   ========================================================================== */
+.wedding-spotlight-section {
+  padding: 110px 6%;
+  background: #000000;
+  position: relative;
+  z-index: 5;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.wedding-spotlight-grid {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.wedding-spotlight-frame {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
+}
+
+.wedding-spotlight-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ==========================================================================
+   SECTION 1: Swiss Precision 3-Col
    ========================================================================== */
 .swiss-section {
   padding: 110px 6%;
@@ -656,7 +861,6 @@ body {
   justify-content: space-between;
   min-height: 340px;
   transition: background 0.3s ease, transform 0.35s var(--ease-apple);
-  position: relative;
 }
 
 .swiss-grid-cell:hover {
@@ -669,12 +873,6 @@ body {
   font-size: 2.2rem;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.2);
-  transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.swiss-grid-cell:hover .swiss-cell-num {
-  color: var(--amber-core);
-  transform: translateX(4px);
 }
 
 .swiss-cell-title {
@@ -702,7 +900,7 @@ body {
 }
 
 /* ==========================================================================
-   SECTION 3: Native Sticky Overlapping Cards with Glare Physics
+   Sticky Overlapping Hardware Cards
    ========================================================================== */
 .glass-overlap-wrapper {
   position: relative;
@@ -722,22 +920,6 @@ body {
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
   padding: 50px;
   overflow: hidden;
-  position: relative;
-}
-
-/* Interactive Spotlight Glare Effect */
-.interactive-glare-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(400px circle at var(--glare-x, 50%) var(--glare-y, 50%), rgba(245, 158, 11, 0.07), transparent 65%);
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.interactive-glare-card:hover::after {
-  opacity: 1;
 }
 
 .glass-card-inner {
@@ -796,7 +978,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  perspective: 800px;
 }
 
 .frameless-component-visual img {
@@ -804,15 +985,10 @@ body {
   max-width: 420px;
   height: auto;
   display: block;
-  transition: transform 0.4s var(--ease-apple);
-}
-
-.glass-card-stack:hover .frameless-component-visual img {
-  transform: translateY(-6px) scale(1.03);
 }
 
 /* ==========================================================================
-   SECTION 4: Founder's Codex & Event Portfolio (Delhi NCR)
+   Editorial Section
    ========================================================================== */
 .editorial-section {
   padding: 110px 6%;
@@ -895,11 +1071,6 @@ body {
   border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: transform 0.5s var(--ease-apple);
-}
-
-.editorial-visual-frame:hover {
-  transform: scale(1.02);
 }
 
 .editorial-visual-frame img {
@@ -909,7 +1080,6 @@ body {
   display: block;
 }
 
-/* Event Portfolio 4-Grid */
 .event-portfolio-grid {
   max-width: 1320px;
   margin: 50px auto 0;
@@ -957,12 +1127,8 @@ body {
   font-weight: 700 !important;
 }
 
-.whatsapp-cta:hover {
-  background: #20b858 !important;
-}
-
 /* ==========================================================================
-   SECTION 5: Sensory Flavor Lab (Animated Botanical Meters)
+   Sensory Flavor Lab
    ========================================================================== */
 .sensory-lab-section {
   padding: 110px 6%;
@@ -1002,7 +1168,6 @@ body {
   color: #000000;
   border-color: #ffffff;
   font-weight: 600;
-  transform: translateY(-1px);
 }
 
 .flavor-grid-4col {
@@ -1078,7 +1243,6 @@ body {
   overflow: hidden;
 }
 
-/* Smooth Progress Bar Fill Micro-Animation */
 .meter-fill {
   height: 100%;
   background: var(--amber-core);
@@ -1088,7 +1252,7 @@ body {
 }
 
 /* ==========================================================================
-   SECTION 6: Interactive Tender Estimator
+   Interactive Tender Estimator
    ========================================================================== */
 .estimator-section {
   padding: 110px 6%;
@@ -1136,7 +1300,6 @@ body {
   font-size: 1rem;
   font-weight: 700;
   color: var(--amber-core);
-  transition: transform 0.15s ease;
 }
 
 .apple-slider {
@@ -1194,7 +1357,6 @@ body {
   border-color: var(--amber-core);
   color: #ffffff;
   font-weight: 600;
-  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.12);
 }
 
 .tier-select-clean {
@@ -1207,14 +1369,12 @@ body {
   font-family: var(--font-sans);
   font-size: 0.88rem;
   outline: none;
-  transition: border-color 0.2s;
 }
 
 .tier-select-clean:focus {
   border-color: var(--amber-core);
 }
 
-/* Live Receipt */
 .estimator-summary-card {
   background: #111116;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1240,7 +1400,6 @@ body {
   font-weight: 800;
   color: #ffffff;
   margin: 8px 0 4px;
-  transition: transform 0.2s ease;
 }
 
 .receipt-subnote {
@@ -1273,7 +1432,7 @@ body {
 }
 
 /* ==========================================================================
-   SECTION 7: Standards Accordion (Micro-Interactions)
+   Standards Accordion
    ========================================================================== */
 .standards-section {
   padding: 110px 6%;
@@ -1345,7 +1504,7 @@ body {
 }
 
 /* ==========================================================================
-   Minimalist Swiss Footer
+   Footer
    ========================================================================== */
 .apple-footer {
   padding: 80px 6% 36px;
@@ -1530,14 +1689,21 @@ body {
   font-family: var(--font-sans);
   font-size: 0.88rem;
   outline: none;
-  transition: border-color 0.2s;
 }
 
 .form-control-clean:focus {
   border-color: var(--amber-core);
 }
 
-/* Responsive */
+/* ==========================================================================
+   Responsive Viewports (Phone, Tablet, Laptop, Desktop)
+   ========================================================================== */
+@media (max-width: 1200px) {
+  .process-steps-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 1024px) {
   .apple-hero-container {
     grid-template-columns: 1fr;
@@ -1551,6 +1717,17 @@ body {
   }
   .apple-specs-bar {
     justify-content: center;
+  }
+  .bento-col-8, .bento-col-4, .bento-col-6 {
+    grid-column: span 12;
+  }
+  .comp-row {
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 18px 20px;
+    font-size: 0.85rem;
+  }
+  .wedding-spotlight-grid {
+    grid-template-columns: 1fr;
   }
   .swiss-grid-3col {
     grid-template-columns: 1fr;
@@ -1585,6 +1762,20 @@ body {
   .nav-links {
     display: none;
   }
+  .mobile-sticky-action-bar {
+    display: flex;
+  }
+  body {
+    padding-bottom: 64px;
+  }
+  .process-steps-row {
+    grid-template-columns: 1fr;
+  }
+  .comp-row {
+    grid-template-columns: 1.2fr 1fr 1fr;
+    padding: 14px 12px;
+    font-size: 0.78rem;
+  }
   .event-portfolio-grid {
     grid-template-columns: 1fr;
   }
@@ -1596,5 +1787,8 @@ body {
   }
   .glass-card-stack {
     padding: 30px 20px;
+  }
+  .bento-card {
+    padding: 24px 20px;
   }
 }
