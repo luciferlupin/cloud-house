@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLOUDHOUSE — Bespoke Shisha Atelier & Luxury Tenders</title>
+  <meta name="description" content="Cloudhouse engineers private shisha tenders and white-glove sommelier hospitality for elite estates, superyachts, and luxury galas worldwide.">
+
+  <!-- Typography: Plus Jakarta Sans, JetBrains Mono, Cinzel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=JetBrains+Mono:wght@300;400;500;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./src/styles/main.css">
+</head>
+<body class="single-canvas-bg">
+
+  <!-- Minimal Global Scroll Progress Bar -->
+  <div id="scrollProgressBar" class="scroll-progress-line"></div>
+
+  <!-- Floating Swiss Active Section Indicator -->
+  <div id="floatingSectionIndicator" class="floating-section-indicator">
+    <div class="indicator-pulse-dot"></div>
+    <span class="indicator-text" id="activeSectionName">00 ATMOSPHERE</span>
+  </div>
+
+  <!-- Swiss Glassmorphic Pill Navigation -->
+  <header>
+    <nav class="swiss-nav" aria-label="Main Navigation">
+      <a href="#" class="brand-logo" id="brandLogo">
+        <div class="brand-symbol"></div>
+        <span class="brand-text">CLOUDHOUSE</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#swiss-precision" id="navPrecision">Precision</a></li>
+        <li><a href="#hardware-glass" id="navHardware">Hardware</a></li>
+        <li><a href="#editorial" id="navManifesto">Manifesto</a></li>
+        <li><a href="#sensory-lab" id="navSensory">Sensory Lab</a></li>
+        <li><a href="#tender-config" id="navTender">The Tender</a></li>
+        <li><a href="#codex" id="navCodex">Codex</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Procedural ASMR Ember Soundscape Toggle -->
+        <button class="ambient-toggle" id="ambientToggle" aria-label="Toggle Ambient Ember Audio" title="Play Ambient Ember Soundscape">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          </svg>
+        </button>
+
+        <button class="btn-pill-white open-booking-modal" id="navCtaReserve">
+          Reserve Tender
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ==========================================================================
+         SECTION 00: Apple Hardware Hero Reveal
+         ========================================================================== -->
+    <section class="apple-hero" id="hero" data-section-num="00" data-section-title="ATMOSPHERE">
+      <!-- Interactive Smoke Physics Canvas strictly inside Hero -->
+      <canvas id="smokeCanvas" class="hero-smoke-canvas"></canvas>
+      <div class="apple-hero-container">
+        <div class="scroll-reveal is-revealed">
+          <div class="hero-tag-pill">
+            <span class="green-status-dot"></span>
+            <span>Private Tenders 2026/2027 · Global Dispatch</span>
+          </div>
+
+          <h1 class="apple-giant-title">
+            Titanium. <br>
+            Pure Crystal. <br>
+            <span class="glow-gradient">Pure Atmosphere.</span>
+          </h1>
+
+          <p class="apple-hero-sub">
+            The world’s most refined shisha experience, engineered with Swiss medical precision and curated with white-glove sommelier hospitality.
+          </p>
+
+          <div class="apple-btn-group">
+            <button class="btn-pill-white open-booking-modal" id="heroBtnReserve">
+              Curate an Experience
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </button>
+
+            <a href="#tender-config" class="btn-pill-glass" id="heroBtnEstimator">
+              Interactive Estimator
+            </a>
+          </div>
+
+          <div class="apple-specs-bar">
+            <div>
+              <div class="spec-figure">316L <span>Ti</span></div>
+              <div class="spec-name">Surgical Monoblock</div>
+            </div>
+            <div>
+              <div class="spec-figure">18 <span>dB</span></div>
+              <div class="spec-name">Silent Purge Acoustic</div>
+            </div>
+            <div>
+              <div class="spec-figure">0.02 <span>μm</span></div>
+              <div class="spec-name">Crystal Dispersion</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Frameless Floating Shisha Subject with Parallax -->
+        <div class="frameless-hardware-stage scale-reveal is-revealed">
+          <img src="/images/vessel-isolated.jpg" alt="Cloudhouse Monolith Titanium Shisha Vessel" class="frameless-shisha-img parallax-on-scroll" id="heroShishaVisual" fetchpriority="high" decoding="async" width="480" height="640">
+          
+          <div class="floating-pointer pointer-top">
+            <div class="pointer-label">Thermal Bloom</div>
+            <div class="pointer-title">Organic Coconut Hearth</div>
+          </div>
+
+          <div class="floating-pointer pointer-bottom">
+            <div class="pointer-label">Acoustic Engineering</div>
+            <div class="pointer-title">Silent Multistage Purge</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 01: Swiss Typographic Grid (Minimalist Architectural Precision)
+         ========================================================================== -->
+    <section class="swiss-section" id="swiss-precision" data-section-num="01" data-section-title="PRECISION">
+      <div class="swiss-header-bar scroll-reveal">
+        <div>
+          <div class="swiss-code-title">01 / SWISS PRECISION SPECIFICATION</div>
+          <h2 class="swiss-heading">Constructed without compromise.</h2>
+        </div>
+        <div class="swiss-geo">
+          <div>ATELIER ZÜRICH · CH-8001</div>
+          <div>COORDINATES: 47.3769° N, 8.5417° E</div>
+        </div>
+      </div>
+
+      <div class="swiss-grid-3col">
+        <!-- Cell 01 -->
+        <div class="swiss-grid-cell scroll-reveal stagger-1">
+          <div>
+            <div class="swiss-cell-num">01</div>
+            <h3 class="swiss-cell-title">Monoblock Titanium 316L</h3>
+            <p class="swiss-cell-body">
+              Each downstem, chamber, and purge valve is precision-milled from a single solid billet of surgical-grade titanium. Finished in diamond-like carbon (DLC) for complete chemical inertia and zero residual ghosting between aromatic sessions.
+            </p>
+          </div>
+          <div class="swiss-cell-meta">
+            <span>TOLERANCE</span>
+            <span>± 0.005 MM</span>
+          </div>
+        </div>
+
+        <!-- Cell 02 -->
+        <div class="swiss-grid-cell scroll-reveal stagger-2">
+          <div>
+            <div class="swiss-cell-num">02</div>
+            <h3 class="swiss-cell-title">Lead-Free Bohemian Crystal</h3>
+            <p class="swiss-cell-body">
+              Individually hand-blown by Czech master artisans. The geometry creates a laminar vortex that chills and purifies smoke without turbulence, delivering effortless silky inhalation with zero draw resistance.
+            </p>
+          </div>
+          <div class="swiss-cell-meta">
+            <span>WALL THICKNESS</span>
+            <span>12 MM REINFORCED</span>
+          </div>
+        </div>
+
+        <!-- Cell 03 -->
+        <div class="swiss-grid-cell scroll-reveal stagger-3">
+          <div>
+            <div class="swiss-cell-num">03</div>
+            <h3 class="swiss-cell-title">Infrared Laser Ignition</h3>
+            <p class="swiss-cell-body">
+              100% pure organic coconut husk cubes, ignited in flameless laser chambers. Free from lighter fluid fumes, chemical binders, or sulfur taint. Consistent radiant heat calibrated to exactly 210°C.
+            </p>
+          </div>
+          <div class="swiss-cell-meta">
+            <span>PURITY RATING</span>
+            <span>100% UNADULTERATED</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 02: Apple Glassmorphism Overlapping Cards (Hardware Components)
+         ========================================================================== -->
+    <section class="glass-overlap-wrapper" id="hardware-glass" data-section-num="02" data-section-title="HARDWARE">
+      
+      <!-- Overlapping Card 1: The Monolith Titanium Bowl -->
+      <div class="glass-card-stack overlap-card" id="cardBowl">
+        <div class="glass-card-inner">
+          <div class="scroll-reveal">
+            <div class="glass-card-tag">02.1 / CORE HARDWARE</div>
+            <h2 class="glass-card-h2">The Monolith Hearth.</h2>
+            <p class="glass-card-p">
+              Engineered with proprietary thermal baffle fins. Radiates uniform heat across the entire botanical bed while completely shielding delicate essential oils from direct combustion.
+            </p>
+
+            <div class="glass-specs-grid">
+              <div class="glass-spec-item">
+                <div class="kv-key">TEMPERATURE BLOOM</div>
+                <div class="kv-val">210°C ± 2°C</div>
+              </div>
+              <div class="glass-spec-item">
+                <div class="kv-key">MATERIAL</div>
+                <div class="kv-val">Aerospace Titanium</div>
+              </div>
+              <div class="glass-spec-item">
+                <div class="kv-key">SESSION DURATION</div>
+                <div class="kv-val">85 Minutes Constant</div>
+              </div>
+              <div class="glass-spec-item">
+                <div class="kv-key">AIRFLOW CHANNELS</div>
+                <div class="kv-val">16 Laser Micro-Ports</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Isolated Bowl Render Floating on Pure Pitch Black -->
+          <div class="frameless-component-visual scale-reveal stagger-2">
+            <img src="/images/bowl-isolated.jpg" alt="Titanium Shisha Bowl with Glowing Coconut Coals" id="imgBowlIsolated" class="parallax-on-scroll" loading="lazy" decoding="async" width="420" height="420">
+          </div>
+        </div>
+      </div>
+
+      <!-- Overlapping Card 2: The Precision Titanium Wand -->
+      <div class="glass-card-stack overlap-card" id="cardWand">
+        <div class="glass-card-inner">
+          <div class="scroll-reveal">
+            <div class="glass-card-tag">02.2 / TACTILE TOUCHPOINT</div>
+            <h2 class="glass-card-h2">The Precision Wand.</h2>
+            <p class="glass-card-p">
+              Milled ergonomic titanium grip balanced to the exact gram. Fitted with soft-touch food-grade silicone and sealed with hermetically sterilized personal silver tips for every guest.
+            </p>
+
+            <div class="glass-specs-grid">
+              <div class="glass-spec-item">
+                <div class="kv-key">BALANCE RATIO</div>
+                <div class="kv-val">50:50 Center Weighted</div>
+              </div>
+              <div class="glass-spec-item">
+                <div class="kv-key">SURFACE TEXTURE</div>
+                <div class="kv-val">Matte Space Gray Bead-Blast</div>
+              </div>
+              <div class="glass-spec-item">
+                <div class="kv-key">HYGIENE SYSTEM</div>
+                <div class="kv-val">Individual Hermetic Tips</div>
+              </div>
+              <div class="glass-spec-item">
+                <div class="kv-key">MAGNETIC DOCK</div>
+                <div class="kv-val">Neodymium Base Hold</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Isolated Wand Render Floating on Pure Pitch Black -->
+          <div class="frameless-component-visual scale-reveal stagger-2">
+            <img src="/images/wand-isolated.jpg" alt="Precision Machined Titanium Shisha Mouthpiece Wand" id="imgWandIsolated" class="parallax-on-scroll" loading="lazy" decoding="async" width="420" height="236">
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==========================================================================
+         VENUE CREDENTIALS & CLUB CIRCUIT STRIP
+         ========================================================================== -->
+    <section class="venue-strip-section">
+      <div class="venue-strip-inner scroll-reveal">
+        <div class="venue-strip-label">5+ Years Curating Elite Lounges:</div>
+        <div class="venue-chips-group">
+          <span class="venue-pill">Knight Rider</span>
+          <span class="venue-pill">Chammach</span>
+          <span class="venue-pill">Josh</span>
+          <span class="venue-pill">Kiki (Punjabi Bagh)</span>
+          <span class="venue-pill">Punjabi Bagh Club Circuit</span>
+          <span class="venue-pill">Delhi NCR Farmhouses</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 03: The Founder's Codex & Haute Editorial
+         ========================================================================== -->
+    <section class="editorial-section" id="editorial" data-section-num="03" data-section-title="FOUNDER">
+      <div class="editorial-layout">
+        <div class="scroll-reveal">
+          <div class="editorial-tag">03 / FOUNDER'S CODEX · DELHI</div>
+          <blockquote class="editorial-quote">
+            “Craft shisha is an art of heat, purity, and hospitality.”
+          </blockquote>
+          <p class="editorial-body">
+            Founded by <strong>Jatin Yadav</strong> with over 5 years of mastery steering Delhi's premier nightlife circuit—including headline tenures at <strong>Knight Rider</strong>, <strong>Chammach</strong>, <strong>Josh</strong>, and <strong>Kiki (Punjabi Bagh)</strong>. Cloudhouse brings club-grade precision and white-glove sommelier service directly to private residences, farmhouses, and destination venues.
+          </p>
+          <div class="editorial-signature-row">
+            <div class="sommelier-portrait-chip">JY</div>
+            <div>
+              <div class="sommelier-meta-name">Jatin Yadav</div>
+              <div class="sommelier-meta-role">Founder & Master Mixologist · Delhi NCR</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="editorial-visual-frame scale-reveal stagger-2">
+          <img src="/images/editorial-service.jpg" alt="Cloudhouse Shisha Sommelier White-Glove Service Bar" id="imgEditorialService" loading="lazy" decoding="async" width="600" height="338">
+        </div>
+      </div>
+
+      <!-- Specialized Event Caterings Grid -->
+      <div class="event-portfolio-grid scroll-reveal">
+        <div class="event-portfolio-card stagger-1">
+          <div class="event-portfolio-tag">01 / CELEBRATION</div>
+          <h4 class="event-portfolio-title">Grand Marriages & Sangeets</h4>
+          <p class="event-portfolio-desc">High-capacity white-glove shisha bars, laser-ignited organic charcoal, and uniformed sommeliers for destination & palace weddings.</p>
+        </div>
+
+        <div class="event-portfolio-card stagger-2">
+          <div class="event-portfolio-tag">02 / FESTIVE</div>
+          <h4 class="event-portfolio-title">Diwali & Festive Galas</h4>
+          <p class="event-portfolio-desc">High-profile annual family & friends Diwali card parties with customized card-room flavor pairings and continuous silent heat rotation.</p>
+        </div>
+
+        <div class="event-portfolio-card stagger-3">
+          <div class="event-portfolio-tag">03 / PRIVATE</div>
+          <h4 class="event-portfolio-title">House & Terrace Parties</h4>
+          <p class="event-portfolio-desc">Turnkey intimate setups for birthdays, weekend rooftop gatherings, and penthouse celebrations with zero hassle for the host.</p>
+        </div>
+
+        <div class="event-portfolio-card stagger-4">
+          <div class="event-portfolio-tag">04 / ESTATES</div>
+          <h4 class="event-portfolio-title">Delhi Farmhouse Bashes</h4>
+          <p class="event-portfolio-desc">Large outdoor pool & lawn setups across Chattarpur, Westend, and Gurugram with heavy-base titanium pipes built for open-air breezes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 04: Sensory Flavor Lab (Minimalist Grid Cards)
+         ========================================================================== -->
+    <section class="sensory-lab-section" id="sensory-lab" data-section-num="04" data-section-title="SENSORY">
+      <div class="sensory-header-block scroll-reveal">
+        <div class="swiss-code-title">04 / THE SENSORY MENU</div>
+        <h2 class="swiss-heading">Organic Botanical Alchemy.</h2>
+        <div class="filter-chips-row">
+          <button class="chip-btn active" data-filter="all">All Blends</button>
+          <button class="chip-btn" data-filter="citrus">Citrus & Botanicals</button>
+          <button class="chip-btn" data-filter="wood">Cashmere & Woods</button>
+          <button class="chip-btn" data-filter="frost">Alps & Frost</button>
+        </div>
+      </div>
+
+      <div class="flavor-grid-4col">
+        <!-- Blend 1 -->
+        <div class="flavor-card-minimal scroll-reveal stagger-1" data-category="citrus">
+          <div>
+            <div class="flavor-index-tag">Botanical No. 04</div>
+            <h3 class="flavor-card-name">Bergamot & Blood Orange</h3>
+            <p class="flavor-card-desc">Sicilian Tarocco blood orange cold-pressed with Calabrian bergamot and delicate lavender blossoms.</p>
+          </div>
+          <div class="flavor-meters-box">
+            <div class="meter-line"><span>Aroma Bloom</span> <div class="meter-bar"><div class="meter-fill" style="width: 85%;"></div></div></div>
+            <div class="meter-line"><span>Sweetness</span> <div class="meter-bar"><div class="meter-fill" style="width: 40%;"></div></div></div>
+          </div>
+        </div>
+
+        <!-- Blend 2 -->
+        <div class="flavor-card-minimal scroll-reveal stagger-2" data-category="wood">
+          <div>
+            <div class="flavor-index-tag">Reserve No. 09</div>
+            <h3 class="flavor-card-name">Cashmere Oud & Dark Plum</h3>
+            <p class="flavor-card-desc">Smoked damson plum, Madagascar bourbon vanilla pods, and aged French oak barrel essence.</p>
+          </div>
+          <div class="flavor-meters-box">
+            <div class="meter-line"><span>Aroma Bloom</span> <div class="meter-bar"><div class="meter-fill" style="width: 95%;"></div></div></div>
+            <div class="meter-line"><span>Sweetness</span> <div class="meter-bar"><div class="meter-fill" style="width: 65%;"></div></div></div>
+          </div>
+        </div>
+
+        <!-- Blend 3 -->
+        <div class="flavor-card-minimal scroll-reveal stagger-3" data-category="citrus">
+          <div>
+            <div class="flavor-index-tag">Atelier No. 02</div>
+            <h3 class="flavor-card-name">White Tea & Japanese Yuzu</h3>
+            <p class="flavor-card-desc">Silver Needle white tea leaves blended with aromatic yuzu peel and lemon verbena.</p>
+          </div>
+          <div class="flavor-meters-box">
+            <div class="meter-line"><span>Aroma Bloom</span> <div class="meter-bar"><div class="meter-fill" style="width: 70%;"></div></div></div>
+            <div class="meter-line"><span>Sweetness</span> <div class="meter-bar"><div class="meter-fill" style="width: 30%;"></div></div></div>
+          </div>
+        </div>
+
+        <!-- Blend 4 -->
+        <div class="flavor-card-minimal scroll-reveal stagger-4" data-category="frost">
+          <div>
+            <div class="flavor-index-tag">Glacier No. 11</div>
+            <h3 class="flavor-card-name">Swiss Spearmint & Crisp Pear</h3>
+            <p class="flavor-card-desc">Sub-zero Alpine mint crystals over crisp green pear nectar and delicate elderflower.</p>
+          </div>
+          <div class="flavor-meters-box">
+            <div class="meter-line"><span>Aroma Bloom</span> <div class="meter-bar"><div class="meter-fill" style="width: 90%;"></div></div></div>
+            <div class="meter-line"><span>Cooling Frost</span> <div class="meter-bar"><div class="meter-fill" style="width: 95%;"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 05: Interactive Tender Estimator & Concierge Dossier
+         ========================================================================== -->
+    <section class="estimator-section" id="tender-config" data-section-num="05" data-section-title="CONFIGURATOR">
+      <div class="swiss-header-bar scroll-reveal" style="margin-bottom: 50px;">
+        <div>
+          <div class="swiss-code-title">05 / TENDER CONFIGURATOR · DELHI NCR</div>
+          <h2 class="swiss-heading">Plan your private shisha tender.</h2>
+        </div>
+        <div class="swiss-geo">
+          <div>DELHI NCR & DESTINATIONS</div>
+          <div>ESTIMATOR V2.4</div>
+        </div>
+      </div>
+
+      <div class="estimator-shell">
+        <div class="estimator-controls-card scroll-reveal stagger-1">
+          <!-- Setting Selection -->
+          <div>
+            <div class="control-title-row">
+              <span class="control-label">Event Setting</span>
+            </div>
+            <div class="setting-btn-row">
+              <button type="button" class="setting-chip active" data-type="House / Terrace Party">House / Terrace</button>
+              <button type="button" class="setting-chip" data-type="Delhi Farmhouse / Diwali">Farmhouse / Diwali</button>
+              <button type="button" class="setting-chip" data-type="Grand Wedding / Sangeet">Wedding / Sangeet</button>
+            </div>
+          </div>
+
+          <!-- Guests Slider -->
+          <div>
+            <div class="control-title-row">
+              <span class="control-label">Guest Attendance</span>
+              <span class="control-stat-val" id="valGuests">35 Guests</span>
+            </div>
+            <input type="range" id="sliderGuests" class="apple-slider" min="10" max="250" step="5" value="35">
+          </div>
+
+          <!-- Duration Slider -->
+          <div>
+            <div class="control-title-row">
+              <span class="control-label">Service Duration</span>
+              <span class="control-stat-val" id="valDuration">4 Hours</span>
+            </div>
+            <input type="range" id="sliderDuration" class="apple-slider" min="2" max="8" step="1" value="4">
+          </div>
+
+          <!-- Vessels Slider -->
+          <div>
+            <div class="control-title-row">
+              <span class="control-label">Hardware Vessels</span>
+              <span class="control-stat-val" id="valStations">4 Titanium Units</span>
+            </div>
+            <input type="range" id="sliderStations" class="apple-slider" min="2" max="14" step="1" value="4">
+          </div>
+
+          <!-- Mixology Tier -->
+          <div>
+            <div class="control-title-row">
+              <span class="control-label">Sensory Mixology Tier</span>
+            </div>
+            <select id="selectMixologyTier" class="tier-select-clean">
+              <option value="standard">Atelier Signature (Organic Virginia Leaf)</option>
+              <option value="reserve" selected>Reserve Botanicals (Jatin’s Curated Fresh Infusions)</option>
+              <option value="imperial">Imperial Royal Gold (Rare Blends & Caviar Pairings)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Live Calculation Receipt in INR -->
+        <div class="estimator-summary-card scroll-reveal stagger-2">
+          <div>
+            <div class="receipt-tag">CLOUDHOUSE TENDER PROSPECTUS · DELHI</div>
+            <div class="receipt-amount" id="receiptTotal">₹32,700</div>
+            <div class="receipt-subnote">Full sommelier brigade, continuous charcoal replenishment & transport included</div>
+
+            <ul class="receipt-list">
+              <li><span>Attendance</span> <span id="receiptGuests">35 Curated Guests</span></li>
+              <li><span>Hardware</span> <span id="receiptStations">4 Titanium Units</span></li>
+              <li><span>Duration</span> <span id="receiptDuration">4 Hours</span></li>
+              <li><span>Tenders Crew</span> <span id="receiptSommeliers">2 Certified Tenders</span></li>
+              <li><span>Sensory Selection</span> <span id="receiptTier">Reserve Botanicals</span></li>
+            </ul>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <button class="btn-pill-white open-booking-modal" style="width: 100%; justify-content: center;" id="btnLockTender">
+              Lock Tender Date
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+
+            <a href="https://wa.me/919811000000?text=Hi%20Jatin,%20I%20want%20to%20book%20a%20Cloudhouse%20shisha%20tender%20for%20my%20event." target="_blank" rel="noopener" class="btn-pill-white whatsapp-cta" style="width: 100%; justify-content: center; text-decoration: none;">
+              WhatsApp Jatin Directly
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SECTION 06: Swiss Codex / Standards Accordion
+         ========================================================================== -->
+    <section class="standards-section" id="codex" data-section-num="06" data-section-title="CODEX">
+      <div class="swiss-header-bar scroll-reveal" style="margin-bottom: 50px;">
+        <div>
+          <div class="swiss-code-title">06 / CODEX & PROTOCOLS</div>
+          <h2 class="swiss-heading">Zero Compromise Purity.</h2>
+        </div>
+        <div class="swiss-geo">
+          <div>SWISS HOSPITALITY ACCREDITATION</div>
+          <div>ISO 9001 / HACCP PROTOCOL</div>
+        </div>
+      </div>
+
+      <div class="accordion-container-2col">
+        <div class="clean-accordion-item active scroll-reveal stagger-1">
+          <button class="clean-accordion-trigger">
+            <span>Hermetically Sealed Silver Mouthpieces</span>
+            <span class="accordion-plus">+</span>
+          </button>
+          <div class="clean-accordion-content">
+            Every guest receives a serialized, individual medical-grade tip. Host monogram engraving available upon request for private galas.
+          </div>
+        </div>
+
+        <div class="clean-accordion-item scroll-reveal stagger-2">
+          <button class="clean-accordion-trigger">
+            <span>Silent Infrared Pyrometry</span>
+            <span class="accordion-plus">+</span>
+          </button>
+          <div class="clean-accordion-content">
+            Sommeliers discretely monitor head heat with non-contact infrared thermal scanners at 210°C ± 2°C, rotating coals without interrupting guest conversations.
+          </div>
+        </div>
+
+        <div class="clean-accordion-item scroll-reveal stagger-3">
+          <button class="clean-accordion-trigger">
+            <span>Indoor Atmospheric Air Columns</span>
+            <span class="accordion-plus">+</span>
+          </button>
+          <div class="clean-accordion-content">
+            For indoor suites and penthouses, we supply ultra-quiet HEPA H14 + activated charcoal scrubber towers that maintain crystal room air clarity.
+          </div>
+        </div>
+
+        <div class="clean-accordion-item scroll-reveal stagger-4">
+          <button class="clean-accordion-trigger">
+            <span>Global Rapid Concierge Dispatch</span>
+            <span class="accordion-plus">+</span>
+          </button>
+          <div class="clean-accordion-content">
+            All equipment deploys in custom flight cases with rapid delivery to private villas, penthouses, and superyachts worldwide.
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Swiss Minimalist Footer -->
+  <footer class="apple-footer">
+    <div class="footer-top-row scroll-reveal">
+      <div>
+        <div class="footer-brand-title">CLOUDHOUSE</div>
+        <p class="footer-desc-text">
+          Bespoke shisha tender and sensory hospitality by Founder <strong>Jatin Yadav</strong>. Curating elite destination weddings, farmhouses, Diwali galas, and house parties across Delhi NCR & beyond.
+        </p>
+        <div class="city-badges">
+          <span class="city-chip">Punjabi Bagh</span>
+          <span class="city-chip">South Delhi</span>
+          <span class="city-chip">Chattarpur</span>
+          <span class="city-chip">Gurugram</span>
+          <span class="city-chip">Noida</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-header-label">Club Circuit</div>
+        <ul class="footer-nav-list">
+          <li><a href="#editorial">Knight Rider</a></li>
+          <li><a href="#editorial">Chammach</a></li>
+          <li><a href="#editorial">Josh</a></li>
+          <li><a href="#editorial">Kiki (Punjabi Bagh)</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-header-label">Event Caterings</div>
+        <ul class="footer-nav-list">
+          <li><a href="#editorial">Destination Marriages</a></li>
+          <li><a href="#editorial">Diwali Card Bashes</a></li>
+          <li><a href="#editorial">Farmhouse Soirées</a></li>
+          <li><a href="#tender-config">Cost Estimator</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-header-label">Direct Concierge</div>
+        <ul class="footer-nav-list">
+          <li><a href="tel:+919811000000">+91 98110 00000 (Delhi)</a></li>
+          <li><a href="mailto:jatin@cloudhouse.luxury">jatin@cloudhouse.luxury</a></li>
+          <li><a href="https://wa.me/919811000000" target="_blank" rel="noopener" style="color: #25D366; font-weight: 600;">Chat on WhatsApp →</a></li>
+          <li><a href="#" class="open-booking-modal" style="color: var(--amber-core);">Request Private Dossier →</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom-line">
+      <div>© 2026 CLOUDHOUSE ATELIER · FOUNDED BY JATIN YADAV · DELHI NCR</div>
+      <div>SURGICAL TITANIUM · ORGANIC COCONUT CHARCOAL · ZERO TAINT</div>
+    </div>
+  </footer>
+
+  <!-- VIP Tender Reservation Modal -->
+  <div class="modal-overlay" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <button class="modal-close-btn" id="closeModalBtn" aria-label="Close dialog">✕</button>
+      
+      <div class="receipt-tag">PRIVATE CONCIERGE DOSSIER</div>
+      <h3 class="modal-title" id="modalTitle">Curate Cloudhouse Tender</h3>
+      <p class="modal-sub">Direct dispatch to our Master Shisha Sommelier concierge desk.</p>
+
+      <form id="bookingForm">
+        <div class="form-group-clean">
+          <label for="inputClientName" class="form-label-clean">Principal / Host Name</label>
+          <input type="text" id="inputClientName" class="form-control-clean" placeholder="e.g. Lord Alexander Wright" required>
+        </div>
+
+        <div class="form-group-clean">
+          <label for="inputClientEmail" class="form-label-clean">Confidential Email / Representative</label>
+          <input type="email" id="inputClientEmail" class="form-control-clean" placeholder="client@familyoffice.com" required>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="form-group-clean">
+            <label for="inputEventDate" class="form-label-clean">Event Date</label>
+            <input type="date" id="inputEventDate" class="form-control-clean" required>
+          </div>
+          <div class="form-group-clean">
+            <label for="inputEventLocation" class="form-label-clean">City / Coordinates</label>
+            <input type="text" id="inputEventLocation" class="form-control-clean" placeholder="e.g. St. Moritz, CH" required>
+          </div>
+        </div>
+
+        <div class="form-group-clean">
+          <label for="modalPackageSummary" class="form-label-clean">Configured Dossier</label>
+          <input type="text" id="modalPackageSummary" class="form-control-clean" readonly value="Penthouse Estate | 35 Guests | 4 Pipes | Reserve Botanicals">
+        </div>
+
+        <div class="form-group-clean">
+          <label for="inputSpecialNotes" class="form-label-clean">Special Directives / Monogram Requirements</label>
+          <textarea id="inputSpecialNotes" class="form-control-clean" rows="3" placeholder="Yacht boarding protocols, custom flavor pairing preferences, monogram engraving details..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-pill-white" style="width: 100%; justify-content: center; margin-top: 10px;">
+          Transmit Private Dossier
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="./src/scripts/main.js"></script>
+</body>
+</html>
