@@ -1,34 +1,64 @@
 /**
- * Cloudhouse Zero-Lag 120FPS Performance Engine
- * 100% layout-thrashing free:
- * - Uses native asynchronous IntersectionObserver for reveals (0 layout reflows)
- * - Zero getBoundingClientRect in scroll handlers
- * - Native CSS sticky stacking
+ * Cloudhouse High-Fidelity Motion & Micro-Interaction Engine
+ * 1. Masked Line Text Reveals (Headings & Subtitles)
+ * 2. Animated Number Counters on Scroll
+ * 3. Animated Flavor Meter Fill Progress
+ * 4. Hairline Border Draw-in Triggers
+ * 5. 3D Magnetic Tilt & Spec Glare Physics
  */
 
 export function initScrollStack() {
-  const revealElements = document.querySelectorAll('.scroll-reveal, .scale-reveal');
   const sections = Array.from(document.querySelectorAll('section[id]'));
   const progressText = document.getElementById('activeSectionName');
   const progressBar = document.getElementById('scrollProgressBar');
+  const heroStage = document.querySelector('.frameless-hardware-stage');
+  const heroShisha = document.getElementById('heroShishaVisual');
 
-  // 1. Asynchronous Zero-Lag Reveal Observer (Off-main-thread)
+  // 1. Text & Element Motion Observer (Clip-path, Masked Line & Fade Reveals)
+  const motionTargets = document.querySelectorAll(`
+    .line-mask-reveal, 
+    .text-slide-reveal, 
+    .body-slide-reveal, 
+    .badge-wipe-reveal, 
+    .scale-card-reveal,
+    .border-draw-cell,
+    .flavor-card-interactive
+  `);
+
   if ('IntersectionObserver' in window) {
-    const revealObserver = new IntersectionObserver((entries) => {
+    const motionObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('is-revealed');
-          revealObserver.unobserve(entry.target); // Stop observing once revealed
+          entry.target.classList.add('is-active');
+
+          // Trigger Meter Bars inside this target if present
+          const meterFills = entry.target.querySelectorAll('.meter-fill, .bar-fill');
+          meterFills.forEach(bar => {
+            const targetWidth = bar.dataset.fill || bar.style.width;
+            bar.style.width = '0%';
+            setTimeout(() => {
+              bar.style.width = targetWidth;
+            }, 120);
+          });
+
+          // Trigger Animated Number Counters
+          const counter = entry.target.querySelector('.count-up-val');
+          if (counter && !counter.dataset.counted) {
+            counter.dataset.counted = 'true';
+            animateCounter(counter);
+          }
+
+          motionObserver.unobserve(entry.target);
         }
       });
     }, {
-      rootMargin: '0px 0px -50px 0px',
-      threshold: 0.05
+      rootMargin: '0px 0px -60px 0px',
+      threshold: 0.12
     });
 
-    revealElements.forEach(el => revealObserver.observe(el));
+    motionTargets.forEach(el => motionObserver.observe(el));
 
-    // Section tracker observer (zero layout reflow)
+    // Active Section Tracker
     const sectionObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting && progressText) {
@@ -38,16 +68,79 @@ export function initScrollStack() {
           progressText.textContent = `${num} ${title}`;
         }
       });
-    }, {
-      threshold: 0.3
-    });
+    }, { threshold: 0.35 });
 
     sections.forEach(s => sectionObserver.observe(s));
   } else {
-    revealElements.forEach(el => el.classList.add('is-revealed'));
+    motionTargets.forEach(el => el.classList.add('is-active'));
   }
 
-  // 2. Extremely lightweight passive progress bar (only touches 1 CSS property)
+  // 2. Animated Number Counter Helper
+  function animateCounter(el) {
+    const end = parseFloat(el.dataset.target) || 0;
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    const decimals = parseInt(el.dataset.decimals, 10) || 0;
+    const duration = 1600;
+    const startTime = performance.now();
+
+    function update(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // Apple-like easeOutExpo
+      const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const current = (ease * end).toFixed(decimals);
+      el.textContent = `${prefix}${current}${suffix}`;
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        el.textContent = `${prefix}${end.toFixed(decimals)}${suffix}`;
+      }
+    }
+    requestAnimationFrame(update);
+  }
+
+  // 3. Subtle 3D Magnetic Tilt on Hero Hardware Subject
+  if (heroStage && heroShisha && window.innerWidth > 900) {
+    let tiltX = 0, tiltY = 0;
+    let targetX = 0, targetY = 0;
+
+    heroStage.addEventListener('mousemove', (e) => {
+      const rect = heroStage.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      targetX = x * 14; // Max 14deg tilt
+      targetY = -y * 14;
+    }, { passive: true });
+
+    heroStage.addEventListener('mouseleave', () => {
+      targetX = 0;
+      targetY = 0;
+    });
+
+    function tiltLoop() {
+      tiltX += (targetX - tiltX) * 0.08;
+      tiltY += (targetY - tiltY) * 0.08;
+      heroShisha.style.transform = `perspective(1000px) rotateY(${tiltX.toFixed(2)}deg) rotateX(${tiltY.toFixed(2)}deg)`;
+      requestAnimationFrame(tiltLoop);
+    }
+    tiltLoop();
+  }
+
+  // 4. Interactive Card Spotlight Glare on Hover
+  const glareCards = document.querySelectorAll('.interactive-glare-card');
+  glareCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--glare-x', `${x}px`);
+      card.style.setProperty('--glare-y', `${y}px`);
+    }, { passive: true });
+  });
+
+  // 5. Scroll Progress Bar
   if (progressBar) {
     let ticking = false;
     window.addEventListener('scroll', () => {

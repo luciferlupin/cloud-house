@@ -1,7 +1,7 @@
 @import './variables.css';
 
 /* ==========================================================================
-   Zero-Lag 120FPS Performance Stylesheet
+   Advanced Motion, Swiss Typography & Micro-Interaction Stylesheet
    ========================================================================== */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -35,9 +35,10 @@ body {
   left: 0;
   height: 2px;
   width: 0%;
-  background: var(--amber-core);
+  background: linear-gradient(90deg, var(--amber-core), #ffffff);
   z-index: 9999;
   pointer-events: none;
+  box-shadow: 0 0 10px var(--amber-core);
 }
 
 /* Floating Swiss Section Tracker */
@@ -51,11 +52,14 @@ body {
   align-items: center;
   gap: 8px;
   padding: 8px 14px;
-  background: #0d0d12;
+  background: rgba(12, 12, 16, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-pill);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
   pointer-events: none;
+  transition: opacity 0.3s ease;
 }
 
 .indicator-pulse-dot {
@@ -63,6 +67,13 @@ body {
   height: 6px;
   border-radius: 50%;
   background: var(--amber-core);
+  box-shadow: 0 0 8px var(--amber-core);
+  animation: pulseAmber 2.2s infinite ease-in-out;
+}
+
+@keyframes pulseAmber {
+  0%, 100% { transform: scale(0.9); opacity: 0.6; }
+  50% { transform: scale(1.3); opacity: 1; }
 }
 
 .indicator-text {
@@ -73,47 +84,87 @@ body {
   text-transform: uppercase;
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 5px;
-}
-::-webkit-scrollbar-track {
-  background: #000000;
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 3px;
-}
-
 /* ==========================================================================
-   Smooth Zero-Lag Element Reveals
+   MOTION SCROLL ANIMATION SUITE (Headings, Sub-titles, Body & Wipes)
    ========================================================================== */
-.scroll-reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
+
+/* 1. Line-Masked Heading Reveal (Apple / Awwwards Style) */
+.line-mask-reveal {
+  display: block;
+  overflow: hidden;
+  position: relative;
 }
 
-.scroll-reveal.is-revealed {
+.line-mask-reveal .line-text {
+  display: inline-block;
+  transform: translateY(115%);
+  opacity: 0;
+  transition: transform 0.85s var(--ease-apple), opacity 0.85s ease;
+  will-change: transform, opacity;
+}
+
+.line-mask-reveal.is-active .line-text {
+  transform: translateY(0%);
+  opacity: 1;
+}
+
+/* 2. Sub-headings & Quotes Reveal with Kinetic Blur */
+.text-slide-reveal {
+  opacity: 0;
+  transform: translateY(32px) scale(0.98);
+  filter: blur(5px);
+  transition: opacity 0.8s var(--ease-apple), transform 0.8s var(--ease-apple), filter 0.8s var(--ease-apple);
+  will-change: opacity, transform, filter;
+}
+
+.text-slide-reveal.is-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+/* 3. Body Copy & Description Smooth Glide */
+.body-slide-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.75s var(--ease-apple), transform 0.75s var(--ease-apple);
+  will-change: opacity, transform;
+}
+
+.body-slide-reveal.is-active {
   opacity: 1;
   transform: translateY(0);
 }
 
-.scale-reveal {
+/* 4. Monospace Badge Clip-Path Wipe */
+.badge-wipe-reveal {
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.7s var(--ease-apple);
+}
+
+.badge-wipe-reveal.is-active {
+  clip-path: inset(0 0% 0 0);
+}
+
+/* 5. Scale Card & Image Zoom-in Reveal */
+.scale-card-reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(30px) scale(0.95);
+  transition: opacity 0.85s var(--ease-apple), transform 0.85s var(--ease-apple);
+  will-change: opacity, transform;
 }
 
-.scale-reveal.is-revealed {
+.scale-card-reveal.is-active {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
 
-.stagger-1 { transition-delay: 0.05s; }
-.stagger-2 { transition-delay: 0.1s; }
-.stagger-3 { transition-delay: 0.15s; }
-.stagger-4 { transition-delay: 0.2s; }
+/* Stagger Delays */
+.delay-1 { transition-delay: 0.08s; }
+.delay-2 { transition-delay: 0.16s; }
+.delay-3 { transition-delay: 0.24s; }
+.delay-4 { transition-delay: 0.32s; }
+.delay-5 { transition-delay: 0.40s; }
 
 /* Smoke canvas confined to Hero only */
 .hero-smoke-canvas {
@@ -143,6 +194,7 @@ body {
   justify-content: space-between;
   z-index: 1000;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
 .brand-logo {
@@ -162,6 +214,7 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
+  box-shadow: 0 0 12px var(--amber-glow);
 }
 
 .brand-symbol::after {
@@ -170,6 +223,12 @@ body {
   height: 6px;
   background: var(--amber-core);
   border-radius: 50%;
+  animation: emberPulse 2.6s infinite ease-in-out;
+}
+
+@keyframes emberPulse {
+  0%, 100% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.25); opacity: 1; box-shadow: 0 0 8px var(--amber-core); }
 }
 
 .brand-text {
@@ -195,10 +254,26 @@ body {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   transition: color 0.15s ease;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 1.5px;
+  background: var(--amber-core);
+  transition: width 0.25s ease;
 }
 
 .nav-links a:hover {
   color: #ffffff;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
 }
 
 .nav-actions {
@@ -218,12 +293,13 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.2s ease;
 }
 
 .ambient-toggle:hover, .ambient-toggle.playing {
   color: var(--amber-core);
   border-color: var(--border-amber);
+  box-shadow: 0 0 12px var(--amber-glow);
 }
 
 .btn-pill-white {
@@ -240,11 +316,13 @@ body {
   text-decoration: none;
   border: none;
   cursor: pointer;
-  transition: background 0.15s ease;
+  transition: transform 0.2s var(--ease-apple), background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn-pill-white:hover {
   background: #ececf0;
+  transform: translateY(-1.5px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
 }
 
 .btn-pill-glass {
@@ -261,11 +339,13 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.12);
   text-decoration: none;
   cursor: pointer;
-  transition: background 0.15s ease;
+  transition: transform 0.2s var(--ease-apple), background 0.2s ease;
 }
 
 .btn-pill-glass:hover {
   background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.24);
+  transform: translateY(-1.5px);
 }
 
 /* ==========================================================================
@@ -316,10 +396,17 @@ body {
   height: 6px;
   border-radius: 50%;
   background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: pulseGreen 2s infinite;
+}
+
+@keyframes pulseGreen {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; transform: scale(1.25); }
 }
 
 .apple-giant-title {
-  font-size: clamp(3rem, 5.8vw, 5.2rem);
+  font-size: clamp(3.1rem, 5.8vw, 5.2rem);
   font-weight: 800;
   line-height: 0.98;
   letter-spacing: -0.04em;
@@ -377,12 +464,13 @@ body {
   margin-top: 2px;
 }
 
-/* Frameless Floating Shisha Subject */
+/* Frameless Floating Shisha Subject with 3D Magnetic Tilt */
 .frameless-hardware-stage {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  perspective: 1000px;
 }
 
 .frameless-shisha-img {
@@ -390,15 +478,40 @@ body {
   max-width: 480px;
   height: auto;
   display: block;
+  transition: transform 0.12s linear;
+  will-change: transform;
 }
 
+/* Micro-Interaction: Radar Pulse Spec Pointers */
 .floating-pointer {
   position: absolute;
   padding: 10px 16px;
   background: #0d0d12;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-md);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s var(--ease-apple), border-color 0.3s;
+}
+
+.floating-pointer:hover {
+  border-color: var(--amber-core);
+  transform: scale(1.05);
+}
+
+.floating-pointer::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--amber-core);
+  opacity: 0;
+  animation: pointerRadar 2.5s infinite;
+  pointer-events: none;
+}
+
+@keyframes pointerRadar {
+  0% { transform: scale(0.98); opacity: 0.8; }
+  100% { transform: scale(1.15); opacity: 0; }
 }
 
 .pointer-top {
@@ -426,10 +539,68 @@ body {
 }
 
 /* ==========================================================================
-   SECTION 2: Swiss Typographic Grid
+   Venue & Club Credentials Strip
+   ========================================================================== */
+.venue-strip-section {
+  padding: 36px 6%;
+  background: #000000;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  z-index: 5;
+}
+
+.venue-strip-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.venue-strip-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--amber-core);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.venue-chips-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.venue-pill {
+  padding: 6px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: transform 0.25s var(--ease-apple), border-color 0.25s, color 0.25s;
+  cursor: default;
+}
+
+.venue-pill:hover {
+  border-color: var(--amber-core);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.15);
+}
+
+/* ==========================================================================
+   SECTION 2: Swiss Typographic Grid (Animated Border Drawing)
    ========================================================================== */
 .swiss-section {
-  padding: 100px 6%;
+  padding: 110px 6%;
   background: #000000;
   position: relative;
   z-index: 5;
@@ -454,7 +625,7 @@ body {
 }
 
 .swiss-heading {
-  font-size: clamp(1.9rem, 3.5vw, 3.2rem);
+  font-size: clamp(2rem, 3.5vw, 3.3rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.1;
@@ -479,23 +650,31 @@ body {
 
 .swiss-grid-cell {
   background: #000000;
-  padding: 40px 32px;
+  padding: 44px 34px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 340px;
-  transition: background 0.15s ease;
+  transition: background 0.3s ease, transform 0.35s var(--ease-apple);
+  position: relative;
 }
 
 .swiss-grid-cell:hover {
-  background: #050507;
+  background: #060609;
+  transform: translateY(-3px);
 }
 
 .swiss-cell-num {
   font-family: var(--font-mono);
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.2);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.swiss-grid-cell:hover .swiss-cell-num {
+  color: var(--amber-core);
+  transform: translateX(4px);
 }
 
 .swiss-cell-title {
@@ -523,7 +702,7 @@ body {
 }
 
 /* ==========================================================================
-   SECTION 3: Native Sticky Overlapping Cards (Zero-Lag)
+   SECTION 3: Native Sticky Overlapping Cards with Glare Physics
    ========================================================================== */
 .glass-overlap-wrapper {
   position: relative;
@@ -543,6 +722,22 @@ body {
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
   padding: 50px;
   overflow: hidden;
+  position: relative;
+}
+
+/* Interactive Spotlight Glare Effect */
+.interactive-glare-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(400px circle at var(--glare-x, 50%) var(--glare-y, 50%), rgba(245, 158, 11, 0.07), transparent 65%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.interactive-glare-card:hover::after {
+  opacity: 1;
 }
 
 .glass-card-inner {
@@ -563,7 +758,7 @@ body {
 }
 
 .glass-card-h2 {
-  font-size: clamp(2rem, 3.2vw, 3rem);
+  font-size: clamp(2.1rem, 3.4vw, 3.1rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.1;
@@ -601,6 +796,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  perspective: 800px;
 }
 
 .frameless-component-visual img {
@@ -608,117 +804,18 @@ body {
   max-width: 420px;
   height: auto;
   display: block;
+  transition: transform 0.4s var(--ease-apple);
 }
 
-/* Venue & Club Credentials Strip */
-.venue-strip-section {
-  padding: 40px 6%;
-  background: #000000;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  position: relative;
-  z-index: 5;
-}
-
-.venue-strip-inner {
-  max-width: 1320px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-.venue-strip-label {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--amber-core);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  flex-shrink: 0;
-}
-
-.venue-chips-group {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.venue-pill {
-  padding: 6px 16px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-pill);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--text-secondary);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  transition: all 0.2s;
-}
-
-.venue-pill:hover {
-  border-color: var(--amber-core);
-  color: #ffffff;
-}
-
-/* Event Portfolio 4-Grid */
-.event-portfolio-grid {
-  max-width: 1320px;
-  margin: 40px auto 0;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-}
-
-.event-portfolio-card {
-  background: #09090c;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: var(--radius-md);
-  padding: 24px 20px;
-  transition: border-color 0.2s;
-}
-
-.event-portfolio-card:hover {
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.event-portfolio-tag {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  color: var(--amber-core);
-  text-transform: uppercase;
-  margin-bottom: 8px;
-}
-
-.event-portfolio-title {
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-
-.event-portfolio-desc {
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  line-height: 1.55;
-}
-
-.whatsapp-cta {
-  background: #25D366 !important;
-  color: #000000 !important;
-  font-weight: 700 !important;
-}
-
-.whatsapp-cta:hover {
-  background: #22bf5b !important;
+.glass-card-stack:hover .frameless-component-visual img {
+  transform: translateY(-6px) scale(1.03);
 }
 
 /* ==========================================================================
-   SECTION 4: Haute Editorial Section
+   SECTION 4: Founder's Codex & Event Portfolio (Delhi NCR)
    ========================================================================== */
 .editorial-section {
-  padding: 100px 6%;
+  padding: 110px 6%;
   background: #000000;
   position: relative;
   z-index: 5;
@@ -751,6 +848,8 @@ body {
   letter-spacing: -0.01em;
   color: #ffffff;
   margin-bottom: 24px;
+  border-left: 3px solid var(--amber-core);
+  padding-left: 20px;
 }
 
 .editorial-body {
@@ -775,12 +874,14 @@ body {
   align-items: center;
   justify-content: center;
   font-family: var(--font-mono);
-  font-size: 0.78rem;
+  font-size: 0.82rem;
+  font-weight: 700;
   color: var(--amber-core);
+  box-shadow: 0 0 15px var(--amber-glow);
 }
 
 .sommelier-meta-name {
-  font-size: 0.92rem;
+  font-size: 0.94rem;
   font-weight: 700;
 }
 
@@ -794,6 +895,11 @@ body {
   border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.5s var(--ease-apple);
+}
+
+.editorial-visual-frame:hover {
+  transform: scale(1.02);
 }
 
 .editorial-visual-frame img {
@@ -803,11 +909,63 @@ body {
   display: block;
 }
 
+/* Event Portfolio 4-Grid */
+.event-portfolio-grid {
+  max-width: 1320px;
+  margin: 50px auto 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.event-portfolio-card {
+  background: #09090c;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-md);
+  padding: 26px 22px;
+  transition: transform 0.3s var(--ease-apple), border-color 0.3s ease;
+}
+
+.event-portfolio-card:hover {
+  border-color: rgba(245, 158, 11, 0.35);
+  transform: translateY(-4px);
+}
+
+.event-portfolio-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--amber-core);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.event-portfolio-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.event-portfolio-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.whatsapp-cta {
+  background: #25D366 !important;
+  color: #000000 !important;
+  font-weight: 700 !important;
+}
+
+.whatsapp-cta:hover {
+  background: #20b858 !important;
+}
+
 /* ==========================================================================
-   SECTION 5: Sensory Flavor Lab
+   SECTION 5: Sensory Flavor Lab (Animated Botanical Meters)
    ========================================================================== */
 .sensory-lab-section {
-  padding: 100px 6%;
+  padding: 110px 6%;
   background: #000000;
   position: relative;
   z-index: 5;
@@ -836,7 +994,7 @@ body {
   color: var(--text-secondary);
   font-size: 0.78rem;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.2s ease;
 }
 
 .chip-btn:hover, .chip-btn.active {
@@ -844,6 +1002,7 @@ body {
   color: #000000;
   border-color: #ffffff;
   font-weight: 600;
+  transform: translateY(-1px);
 }
 
 .flavor-grid-4col {
@@ -858,15 +1017,17 @@ body {
   background: #0a0a0e;
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: var(--radius-md);
-  padding: 26px 20px;
+  padding: 28px 22px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: background 0.15s ease;
+  transition: transform 0.3s var(--ease-apple), background 0.2s, border-color 0.2s;
 }
 
 .flavor-card-minimal:hover {
-  background: #111116;
+  background: #101015;
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-4px);
 }
 
 .flavor-index-tag {
@@ -917,17 +1078,20 @@ body {
   overflow: hidden;
 }
 
+/* Smooth Progress Bar Fill Micro-Animation */
 .meter-fill {
   height: 100%;
   background: var(--amber-core);
   border-radius: 2px;
+  width: 0%;
+  transition: width 1.2s var(--ease-apple);
 }
 
 /* ==========================================================================
    SECTION 6: Interactive Tender Estimator
    ========================================================================== */
 .estimator-section {
-  padding: 100px 6%;
+  padding: 110px 6%;
   background: #000000;
   position: relative;
   z-index: 5;
@@ -972,6 +1136,7 @@ body {
   font-size: 1rem;
   font-weight: 700;
   color: var(--amber-core);
+  transition: transform 0.15s ease;
 }
 
 .apple-slider {
@@ -994,6 +1159,11 @@ body {
   background: #ffffff;
   border: 3px solid #000000;
   cursor: pointer;
+  transition: transform 0.15s var(--ease-apple);
+}
+
+.apple-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
 }
 
 .setting-btn-row {
@@ -1011,7 +1181,7 @@ body {
   font-size: 0.8rem;
   text-align: center;
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: all 0.2s ease;
 }
 
 .setting-chip:hover {
@@ -1024,6 +1194,7 @@ body {
   border-color: var(--amber-core);
   color: #ffffff;
   font-weight: 600;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.12);
 }
 
 .tier-select-clean {
@@ -1036,6 +1207,11 @@ body {
   font-family: var(--font-sans);
   font-size: 0.88rem;
   outline: none;
+  transition: border-color 0.2s;
+}
+
+.tier-select-clean:focus {
+  border-color: var(--amber-core);
 }
 
 /* Live Receipt */
@@ -1064,6 +1240,7 @@ body {
   font-weight: 800;
   color: #ffffff;
   margin: 8px 0 4px;
+  transition: transform 0.2s ease;
 }
 
 .receipt-subnote {
@@ -1096,10 +1273,10 @@ body {
 }
 
 /* ==========================================================================
-   SECTION 7: Standards Accordion
+   SECTION 7: Standards Accordion (Micro-Interactions)
    ========================================================================== */
 .standards-section {
-  padding: 100px 6%;
+  padding: 110px 6%;
   background: #000000;
   position: relative;
   z-index: 5;
@@ -1119,11 +1296,12 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: var(--radius-md);
   overflow: hidden;
-  transition: border-color 0.15s;
+  transition: border-color 0.2s, background 0.2s;
 }
 
 .clean-accordion-item:hover {
-  border-color: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.18);
+  background: #0d0d12;
 }
 
 .clean-accordion-trigger {
@@ -1144,7 +1322,7 @@ body {
 .accordion-plus {
   font-size: 1.2rem;
   color: var(--amber-core);
-  transition: transform 0.2s ease;
+  transition: transform 0.3s var(--ease-apple);
 }
 
 .clean-accordion-item.active .accordion-plus {
@@ -1158,7 +1336,7 @@ body {
   color: var(--text-secondary);
   font-size: 0.88rem;
   line-height: 1.65;
-  transition: max-height 0.25s ease, padding 0.25s ease;
+  transition: max-height 0.35s var(--ease-apple), padding 0.35s ease;
 }
 
 .clean-accordion-item.active .clean-accordion-content {
@@ -1213,6 +1391,12 @@ body {
   font-family: var(--font-mono);
   font-size: 0.7rem;
   color: var(--text-secondary);
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.city-chip:hover {
+  border-color: var(--amber-core);
+  color: #ffffff;
 }
 
 .footer-header-label {
@@ -1235,11 +1419,12 @@ body {
   color: var(--text-secondary);
   text-decoration: none;
   font-size: 0.84rem;
-  transition: color 0.15s;
+  transition: color 0.15s, transform 0.15s;
 }
 
 .footer-nav-list a:hover {
   color: #ffffff;
+  transform: translateX(3px);
 }
 
 .footer-bottom-line {
@@ -1280,6 +1465,12 @@ body {
   padding: 40px;
   position: relative;
   box-shadow: 0 40px 90px rgba(0, 0, 0, 0.95);
+  animation: modalPop 0.3s var(--ease-apple);
+}
+
+@keyframes modalPop {
+  0% { transform: scale(0.94); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
 .modal-close-btn {
@@ -1296,6 +1487,11 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.2s;
+}
+
+.modal-close-btn:hover {
+  transform: rotate(90deg);
 }
 
 .modal-title {
@@ -1334,6 +1530,7 @@ body {
   font-family: var(--font-sans);
   font-size: 0.88rem;
   outline: none;
+  transition: border-color 0.2s;
 }
 
 .form-control-clean:focus {
@@ -1364,6 +1561,9 @@ body {
   .editorial-layout {
     grid-template-columns: 1fr;
   }
+  .event-portfolio-grid {
+    grid-template-columns: 1fr 1fr;
+  }
   .flavor-grid-4col {
     grid-template-columns: 1fr 1fr;
   }
@@ -1384,6 +1584,9 @@ body {
 @media (max-width: 768px) {
   .nav-links {
     display: none;
+  }
+  .event-portfolio-grid {
+    grid-template-columns: 1fr;
   }
   .flavor-grid-4col {
     grid-template-columns: 1fr;
