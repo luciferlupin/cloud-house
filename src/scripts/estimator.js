@@ -30,14 +30,14 @@ export function initTenderEstimator() {
     stations: parseInt(stationsSlider?.value, 10) || 4,
     mixologyTier: 'reserve',
     tierMultipliers: {
-      standard: { name: 'Atelier Signature', pipeRate: 2800, headRate: 600 },
-      reserve: { name: 'Reserve Botanicals (Jatin’s Curated)', pipeRate: 3800, headRate: 950 },
-      imperial: { name: 'Imperial Royal Gold (Rare Blends & Caviar)', pipeRate: 5500, headRate: 1500 }
+      standard: { name: 'Classic Fresh Blends', pipeRate: 2800, headRate: 600 },
+      reserve: { name: 'Reserve Fruit & Mint Blends (Jatin’s Signature)', pipeRate: 3800, headRate: 950 },
+      imperial: { name: 'VIP Exotic Selection (Imported & Fresh Fruit)', pipeRate: 5500, headRate: 1500 }
     }
   };
 
   function calculateCrew(stations) {
-    // 1 Master Tender & Charcoal Specialist per 2-3 stations
+    // 1 Dedicated Hookah Master per 2-3 hookahs
     return Math.max(1, Math.ceil(stations / 2));
   }
 
@@ -45,32 +45,32 @@ export function initTenderEstimator() {
     const tier = state.tierMultipliers[state.mixologyTier] || state.tierMultipliers.reserve;
     const crewCount = calculateCrew(state.stations);
 
-    // Pricing in INR: Hardware Fleet + Sommelier Crew + Botanical & Charcoal refills
+    // Pricing in INR: Hookahs + Dedicated Staff + Flavor & Natural Coal refills + Transport
     const hardwareBase = state.stations * tier.pipeRate;
-    const crewRate = crewCount * state.duration * 1200; // Trained Delhi shisha mixologists
+    const crewRate = crewCount * state.duration * 1200;
     const consumableHeads = Math.ceil(state.guests / 4) * tier.headRate;
-    const logisticsBase = 3500; // Delhi NCR rapid transport & laser ignition setup
+    const logisticsBase = 3500; // Delhi NCR delivery, setup & natural coal heating equipment
 
     const total = hardwareBase + crewRate + consumableHeads + logisticsBase;
 
     // Update Slider UI labels
     if (valGuests) valGuests.textContent = `${state.guests} Guests`;
     if (valDuration) valDuration.textContent = `${state.duration} Hours`;
-    if (valStations) valStations.textContent = `${state.stations} Titanium Units`;
+    if (valStations) valStations.textContent = `${state.stations} Hookahs`;
 
     // Update Live Receipt UI in Indian Rupees
     receiptTotal.textContent = `₹${total.toLocaleString('en-IN')}`;
-    if (receiptGuests) receiptGuests.textContent = `${state.guests} Curated Guests`;
-    if (receiptStations) receiptStations.textContent = `${state.stations} Titanium Units`;
+    if (receiptGuests) receiptGuests.textContent = `${state.guests} Guests`;
+    if (receiptStations) receiptStations.textContent = `${state.stations} Hookahs`;
     if (receiptDuration) receiptDuration.textContent = `${state.duration} Hours Service`;
-    if (receiptSommeliers) receiptSommeliers.textContent = `${crewCount} Certified Tenders`;
+    if (receiptSommeliers) receiptSommeliers.textContent = `${crewCount} Dedicated Staff`;
     if (receiptTier) receiptTier.textContent = tier.name;
 
     // Dynamically update WhatsApp CTA with configured details
     const estimatorWhatsAppBtn = document.getElementById('estimatorWhatsAppBtn') || document.querySelector('.estimator-summary-card .whatsapp-cta');
     if (estimatorWhatsAppBtn) {
       const encodedMsg = encodeURIComponent(
-        `Hi Jatin, I would like to reserve a Cloudhouse Shisha Tender for my ${state.eventType} with ${state.guests} guests, ${state.stations} titanium pipes, ${state.duration} hours, and ${tier.name}. Estimated quotation is ₹${total.toLocaleString('en-IN')}. Please confirm availability.`
+        `Hi Jatin, I want to book Cloudhouse Hookah Catering for my ${state.eventType} with ${state.guests} guests, ${state.stations} hookahs, ${state.duration} hours of service, and ${tier.name}. Estimated quote is ₹${total.toLocaleString('en-IN')}. Please confirm availability.`
       );
       estimatorWhatsAppBtn.href = `https://wa.me/919625748696?text=${encodedMsg}`;
     }
@@ -78,7 +78,7 @@ export function initTenderEstimator() {
     // Pre-populate modal fields if present
     const modalPackageInput = document.getElementById('modalPackageSummary');
     if (modalPackageInput) {
-      modalPackageInput.value = `${state.eventType} | ${state.guests} Guests | ${state.stations} Pipes | ${tier.name} (~₹${total.toLocaleString('en-IN')})`;
+      modalPackageInput.value = `${state.eventType} | ${state.guests} Guests | ${state.stations} Hookahs | ${tier.name} (~₹${total.toLocaleString('en-IN')})`;
     }
   }
 

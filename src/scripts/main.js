@@ -114,18 +114,18 @@ document.addEventListener('DOMContentLoaded', () => {
     bookingForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const submitBtn = bookingForm.querySelector('button[type="submit"]');
-      submitBtn.textContent = 'Transmitting Concierge Request...';
+      submitBtn.textContent = 'Sending Booking Request...';
       submitBtn.disabled = true;
 
       setTimeout(() => {
         bookingForm.innerHTML = `
           <div style="text-align: center; padding: 40px 20px;">
             <div style="width: 54px; height: 54px; border-radius: 50%; background: rgba(16, 185, 129, 0.12); border: 1.5px solid #10b981; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; color: #10b981; font-size: 1.5rem;">✓</div>
-            <h3 style="font-size: 1.45rem; font-weight: 700; margin-bottom: 10px; color: #ffffff;">Dossier Received</h3>
-            <p style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.7; max-width: 420px; margin: 0 auto;">Our Master Shisha Sommelier concierge desk is reviewing your requirements. A bespoke sensory prospectus will be transmitted to your confidential contact within two hours.</p>
+            <h3 style="font-size: 1.45rem; font-weight: 700; margin-bottom: 10px; color: #ffffff;">Booking Request Received!</h3>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.7; max-width: 420px; margin: 0 auto;">Thank you! Founder Jatin Yadav will contact you directly on your phone or WhatsApp (<strong style="color: #25D366;">+91 96257 48696</strong>) shortly to confirm details and lock your party date.</p>
           </div>
         `;
-      }, 800);
+      }, 700);
     });
   }
 });
